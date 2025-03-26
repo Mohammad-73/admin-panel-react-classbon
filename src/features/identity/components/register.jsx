@@ -4,7 +4,6 @@ import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import {
   Link,
-  redirect,
   useActionData,
   useNavigate,
   useNavigation,
@@ -24,7 +23,7 @@ const Register = () => {
   const submitForm = useSubmit();
 
   const onSubmit = (data) => {
-    const { confirmPassword, ...userData } = data;
+    const { ...userData } = data;
     submitForm(userData, { method: "post" });
   };
   const navigation = useNavigation();
