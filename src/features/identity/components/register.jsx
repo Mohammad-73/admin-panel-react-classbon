@@ -10,7 +10,7 @@ import {
   useRouteError,
   useSubmit,
 } from "react-router-dom";
-import { httpService } from "@core/http-service";
+
 const Register = () => {
   const {
     register,
@@ -23,7 +23,7 @@ const Register = () => {
   const submitForm = useSubmit();
 
   const onSubmit = (data) => {
-    const { ...userData } = data;
+    const { confirmPassword, ...userData } = data;
     submitForm(userData, { method: "post" });
   };
   const navigation = useNavigation();
@@ -162,12 +162,5 @@ const Register = () => {
     </>
   );
 };
-
-export async function registerAction({ request }) {
-  const formData = await request.formData();
-  const data = Object.fromEntries(formData);
-  const response = await httpService.post("/Users", data);
-  return response.status === 200;
-}
 
 export default Register;
