@@ -28,9 +28,9 @@ const AppProvider = ({ children }) => {
   useEffect(() => {
     i18n.changeLanguage(state.language);
     localStorage.setItem("language", state.language);
-    document.body.dataset.direction = state.language === "fa" ? "rtl" : "ltr";
+    document.body.dataset.direction = state.language === "fa" ? "rtl" : "ltr"; // CHANGE APP DIRECTION ON LANGUAGE CHANGE
     document.body.dataset.sidebarPosition =
-      state.language === "fa" ? "right" : "left";
+      state.language === "fa" ? "right" : "left"; // CHANGE SIDEBAR POSITION ON LANGUAGE CHANGE
   }, [state.language]);
 
   useEffect(() => {
