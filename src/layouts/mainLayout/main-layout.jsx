@@ -9,6 +9,7 @@ const MainLayout = () => {
   if (!token) {
     navigate("/login");
   }
+
   return (
     <div className="wrapper" style={{ minHeight: "100h" }}>
       <Sidebar />
