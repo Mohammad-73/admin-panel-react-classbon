@@ -3,7 +3,9 @@ import { Await, useLoaderData } from "react-router-dom";
 import { Suspense } from "react";
 
 const Courses = () => {
-  const data = useLoaderData();
+  const { courses } = useLoaderData();
+  // console.log(coursePromise);
+
   return (
     <div className="row">
       <div className="col-12">
@@ -13,7 +15,7 @@ const Courses = () => {
         <Suspense
           fallback={<p className="text-info">در حال دریافت اطلاعات...</p>}
         >
-          <Await resolve={data.courses}>
+          <Await resolve={courses}>
             {(loadedCourses) => <CourseList courses={loadedCourses} />}
           </Await>
         </Suspense>
