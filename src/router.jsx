@@ -10,6 +10,7 @@ import { loginAction } from "./features/identity/components/_api/login-action";
 import { registerAction } from "./features/identity/components/_api/register-action";
 import CourseDetails from "./features/courses/components/course-details";
 import { courseDetailsLoader } from "./features/courses/components/_api/course-details-loader";
+import { categoriesLoader } from "./pages/_api/categories-loader";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,7 @@ const router = createBrowserRouter([
       {
         path: "course-categories",
         element: <CoursesCategories />,
+        loader: categoriesLoader,
       },
       {
         path: "courses/:id",
