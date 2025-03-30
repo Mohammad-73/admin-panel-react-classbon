@@ -1,6 +1,6 @@
 import { useNavigation } from "react-router-dom";
 import Pagination from "../../../components/pagination";
-// import Spinner from "../../../components/spinner";
+import Spinner from "../../../components/spinner";
 // import { useCategoryContext } from "../category-context";
 
 const CategoryList = ({
