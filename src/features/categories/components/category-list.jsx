@@ -1,14 +1,15 @@
 import { useNavigation } from "react-router-dom";
-// import Pagination from "../../../components/pagination";
+import Pagination from "../../../components/pagination";
 // import Spinner from "../../../components/spinner";
 // import { useCategoryContext } from "../category-context";
 
 const CategoryList = ({
-  categories: { data },
+  categories: { data, totalRecords },
   //   deleteCategory,
 }) => {
   const navigation = useNavigation();
   //   const { setCategory } = useCategoryContext();
+
   return (
     <>
       <div className="row">
@@ -67,7 +68,7 @@ const CategoryList = ({
               </tbody>
             </table>
             <div className="card-footer">
-              {/* <Pagination totalRecords={totalRecords} /> */}
+              <Pagination totalRecords={totalRecords} />
             </div>
           </div>
         </div>
