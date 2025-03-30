@@ -1,55 +1,59 @@
-import { Await, useLoaderData } from "react-router-dom";
+import { Await, useLoaderData, useNavigate } from "react-router-dom";
 import { Suspense } from "react";
 import CategoryList from "../features/categories/components/category-list";
-// import Modal from "../components/modal";
+import { useState } from "react";
+import { httpInterceptedService } from "../core/http-service";
+import { toast } from "react-toastify";
+import { useTranslation } from "react-i18next";
+import Modal from "../components/modal";
 // import { useTranslation } from "react-i18next";
 // import AddOrUpdateCategory from "../features/categories/components/add-or-update-category";
 // import { useCategoryContext } from "../features/categories/category-context";
 
 const CourseCategories = () => {
-  // const [showDeleteModal, setShowDeleteModal] = useState(false);
-  // const [selectedCategory, setSelectedCategory] = useState();
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState();
   // const [showAddCategory, setShowAddCategory] = useState(false);
 
   // const { category } = useCategoryContext();
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
-  // const { t } = useTranslation();
+  const { t } = useTranslation();
 
   // const deleteCategory = (categoryId) => {
   //   setSelectedCategory(categoryId);
   //   setShowDeleteModal(true);
   // };
 
-  // const handleDeleteCategory = async () => {
-  //   setShowDeleteModal(false);
-  //   const response = httpInterceptedService.delete(
-  //     `/CourseCategory/${selectedCategory}`
-  //   );
+  const handleDeleteCategory = async () => {
+    setShowDeleteModal(false);
+    const response = httpInterceptedService.delete(
+      `/CourseCategory/${selectedCategory}`
+    );
 
-  //   toast.promise(
-  //     response,
-  //     {
-  //       pending: "در حال حذف ...",
-  //       success: {
-  //         render() {
-  //           const url = new URL(window.location.href);
-  //           navigate(url.pathname + url.search);
-  //           return "عملیات با موفقیت انجام شد";
-  //         },
-  //       },
-  //       error: {
-  //         render({ data }) {
-  //           return t("categoryList." + data.response.data.code);
-  //         },
-  //       },
-  //     },
-  //     {
-  //       position: toast.POSITION.BOTTOM_LEFT,
-  //     }
-  //   );
-  // };
+    toast.promise(
+      response,
+      {
+        pending: "در حال حذف ...",
+        success: {
+          render() {
+            const url = new URL(window.location.href);
+            navigate(url.pathname + url.search);
+            return "عملیات با موفقیت انجام شد";
+          },
+        },
+        error: {
+          render({ data }) {
+            return t("categoryList." + data.response.data.code);
+          },
+        },
+      },
+      {
+        position: toast.POSITION.BOTTOM_LEFT,
+      }
+    );
+  };
 
   const { categories } = useLoaderData();
   return (
@@ -81,7 +85,7 @@ const CourseCategories = () => {
           </Suspense>
         </div>
       </div>
-      {/* <Modal
+      <Modal
         isOpen={showDeleteModal}
         open={setShowDeleteModal}
         title="حذف"
@@ -101,7 +105,7 @@ const CourseCategories = () => {
         >
           حذف
         </button>
-      </Modal> */}
+      </Modal>
     </>
   );
 };
