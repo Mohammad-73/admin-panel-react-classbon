@@ -3,8 +3,8 @@ import { Suspense } from "react";
 import CategoryList from "../features/categories/components/category-list";
 import { useState } from "react";
 import { httpInterceptedService } from "../core/http-service";
-import { toast } from "react-toastify";
-import { useTranslation } from "react-i18next";
+// import { toast } from "react-toastify";
+// import { useTranslation } from "react-i18next";
 import Modal from "../components/modal";
 // import { useTranslation } from "react-i18next";
 // import AddOrUpdateCategory from "../features/categories/components/add-or-update-category";
@@ -19,12 +19,12 @@ const CourseCategories = () => {
 
   const navigate = useNavigate();
 
-  const { t } = useTranslation();
+  // const { t } = useTranslation();
 
-  // const deleteCategory = (categoryId) => {
-  //   setSelectedCategory(categoryId);
-  //   setShowDeleteModal(true);
-  // };
+  const deleteCategory = (categoryId) => {
+    setSelectedCategory(categoryId);
+    setShowDeleteModal(true);
+  };
 
   const handleDeleteCategory = async () => {
     setShowDeleteModal(false);
@@ -32,27 +32,32 @@ const CourseCategories = () => {
       `/CourseCategory/${selectedCategory}`
     );
 
-    toast.promise(
-      response,
-      {
-        pending: "در حال حذف ...",
-        success: {
-          render() {
-            const url = new URL(window.location.href);
-            navigate(url.pathname + url.search);
-            return "عملیات با موفقیت انجام شد";
-          },
-        },
-        error: {
-          render({ data }) {
-            return t("categoryList." + data.response.data.code);
-          },
-        },
-      },
-      {
-        position: toast.POSITION.BOTTOM_LEFT,
-      }
-    );
+    if (response.status === 200) {
+      const url = new URL(window.location.href);
+      navigate(url.pathname + url.search);
+    }
+
+    // toast.promise(
+    //   response,
+    //   {
+    //     pending: "در حال حذف ...",
+    //     success: {
+    //       render() {
+    //         const url = new URL(window.location.href);
+    //         navigate(url.pathname + url.search);
+    //         return "عملیات با موفقیت انجام شد";
+    //       },
+    //     },
+    //     error: {
+    //       render({ data }) {
+    //         return t("categoryList." + data.response.data.code);
+    //       },
+    //     },
+    //   },
+    //   {
+    //     position: toast.POSITION.BOTTOM_LEFT,
+    //   }
+    // );
   };
 
   const { categories } = useLoaderData();
@@ -77,7 +82,7 @@ const CourseCategories = () => {
             <Await resolve={categories}>
               {(loadedCategories) => (
                 <CategoryList
-                  // deleteCategory={deleteCategory}
+                  deleteCategory={deleteCategory}
                   categories={loadedCategories}
                 />
               )}
