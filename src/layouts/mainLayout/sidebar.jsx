@@ -21,7 +21,7 @@ const Sidebar = () => {
           <li className="sidebar-item">
             <NavLink
               className={({ isActive }) =>
-                isActive ? "sidebar-link active" : "sidebar-link"
+                isActive ? " sidebar-link active" : "sidebar-link"
               }
               to={"/"}
             >
@@ -75,7 +75,12 @@ const Sidebar = () => {
             </NavLink>
           </li>
           <li className="sidebar-item">
-            <a className="sidebar-link">
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? " sidebar-link active" : "sidebar-link"
+              }
+              to={"/"}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -96,13 +101,18 @@ const Sidebar = () => {
               <span className="align-middle me-2">
                 {t("mainLayout.sidebar.courseDiscount")}
               </span>
-            </a>
+            </NavLink>
           </li>
           <li className="sidebar-header fw-bolder fs-lg">
             {t("mainLayout.sidebar.userManagement")}
           </li>
           <li className="sidebar-item">
-            <a className="sidebar-link">
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? " sidebar-link active" : "sidebar-link"
+              }
+              to={"/"}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -122,10 +132,15 @@ const Sidebar = () => {
               <span className="align-middle me-2">
                 {t("mainLayout.sidebar.teacherManagement")}
               </span>
-            </a>
+            </NavLink>
           </li>
           <li className="sidebar-item">
-            <a className="sidebar-link">
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? " sidebar-link active" : "sidebar-link"
+              }
+              to={"/"}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -147,13 +162,18 @@ const Sidebar = () => {
               <span className="align-middle me-2">
                 {t("mainLayout.sidebar.studentManagement")}
               </span>
-            </a>
+            </NavLink>
           </li>
           <li className="sidebar-header fw-bolder fs-lg">
             {t("mainLayout.sidebar.blogManagement")}
           </li>
           <li className="sidebar-item">
-            <a className="sidebar-link">
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? " sidebar-link active" : "sidebar-link"
+              }
+              to={"/"}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -173,10 +193,15 @@ const Sidebar = () => {
               <span className="align-middle me-2">
                 {t("mainLayout.sidebar.tagManagement")}
               </span>
-            </a>
+            </NavLink>
           </li>
           <li className="sidebar-item">
-            <a className="sidebar-link">
+            <NavLink
+              className={({ isActive }) =>
+                isActive ? " sidebar-link active" : "sidebar-link"
+              }
+              to={"/"}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -199,7 +224,7 @@ const Sidebar = () => {
               <span className="align-middle me-2">
                 {t("mainLayout.sidebar.postManagement")}
               </span>
-            </a>
+            </NavLink>
           </li>
         </ul>
       </div>
