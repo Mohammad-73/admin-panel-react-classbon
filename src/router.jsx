@@ -12,11 +12,14 @@ import CourseDetails from "./features/courses/components/course-details";
 import { courseDetailsLoader } from "./features/courses/components/_api/course-details-loader";
 import { categoriesLoader } from "./pages/_api/categories-loader";
 import { CategoryProvider } from "./features/categories/category-context";
+import NotFound from "./pages/not-found";
+import UnhandledException from "./pages/unhandled-exception";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
+    errorElement: <UnhandledException />,
     children: [
       {
         element: <Courses />,
@@ -41,6 +44,7 @@ const router = createBrowserRouter([
   },
   {
     element: <IdentityLayout />,
+    errorElement: <UnhandledException />,
     children: [
       {
         path: "login",
@@ -55,6 +59,10 @@ const router = createBrowserRouter([
         errorElement: <Register />,
       },
     ],
+  },
+  {
+    path: "*",
+    element: <NotFound />,
   },
 ]);
 
