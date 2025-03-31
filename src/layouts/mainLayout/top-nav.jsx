@@ -12,12 +12,13 @@ const TopNav = () => {
     localStorage.removeItem("token");
     navigate("/login");
   };
+
   return (
     <nav className="navbar">
       <a className="sidebar-toggle" onClick={toggleSidebar}>
         <i className="hamburger align-self-center"></i>
       </a>
-      <div className="d-flex align-items-center gap-3  me-3">
+      <div className="d-flex align-items-center gap-3 me-3">
         <ChangeLanguage />
         <ChangeTheme />
       </div>
