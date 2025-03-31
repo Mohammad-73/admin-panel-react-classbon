@@ -6,13 +6,13 @@ import { httpInterceptedService } from "../core/http-service";
 import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
 import Modal from "../components/modal";
-// import AddOrUpdateCategory from "../features/categories/components/add-or-update-category";
+import AddOrUpdateCategory from "../features/categories/components/add-or-update-category";
 // import { useCategoryContext } from "../features/categories/category-context";
 
 const CourseCategories = () => {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState();
-  // const [showAddCategory, setShowAddCategory] = useState(false);
+  const [showAddCategory, setShowAddCategory] = useState(false);
 
   // const { category } = useCategoryContext();
 
@@ -59,7 +59,7 @@ const CourseCategories = () => {
     <>
       <div className="row">
         <div className="col-12">
-          {/* <div className="d-flex align-items-center justify-content-between mb-5">
+          <div className="d-flex align-items-center justify-content-between mb-5">
             <a
               className="btn btn-primary fw-bolder mt-n1"
               onClick={() => setShowAddCategory(true)}
@@ -67,9 +67,9 @@ const CourseCategories = () => {
               افزون دسته جدید
             </a>
           </div>
-          {(showAddCategory || category) && (
+          {showAddCategory && (
             <AddOrUpdateCategory setShowAddCategory={setShowAddCategory} />
-          )} */}
+          )}
           <Suspense
             fallback={<p className="text-info">در حال دریافت اطلاعات...</p>}
           >
