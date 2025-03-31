@@ -11,6 +11,7 @@ import { registerAction } from "./features/identity/components/_api/register-act
 import CourseDetails from "./features/courses/components/course-details";
 import { courseDetailsLoader } from "./features/courses/components/_api/course-details-loader";
 import { categoriesLoader } from "./pages/_api/categories-loader";
+import { CategoryProvider } from "./features/categories/category-context";
 
 const router = createBrowserRouter([
   {
@@ -24,7 +25,11 @@ const router = createBrowserRouter([
       },
       {
         path: "course-categories",
-        element: <CoursesCategories />,
+        element: (
+          <CategoryProvider>
+            <CoursesCategories />
+          </CategoryProvider>
+        ),
         loader: categoriesLoader,
       },
       {

@@ -7,14 +7,14 @@ import { toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
 import Modal from "../components/modal";
 import AddOrUpdateCategory from "../features/categories/components/add-or-update-category";
-// import { useCategoryContext } from "../features/categories/category-context";
+import { useCategoryContext } from "../features/categories/category-context";
 
 const CourseCategories = () => {
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState();
   const [showAddCategory, setShowAddCategory] = useState(false);
 
-  // const { category } = useCategoryContext();
+  const { category } = useCategoryContext();
 
   const navigate = useNavigate();
 
@@ -49,7 +49,7 @@ const CourseCategories = () => {
         },
       },
       {
-        position: toast.POSITION.BOTTOM_LEFT,
+        position: "bottom-left",
       }
     );
   };
@@ -67,7 +67,7 @@ const CourseCategories = () => {
               افزون دسته جدید
             </a>
           </div>
-          {showAddCategory && (
+          {(showAddCategory || category) && (
             <AddOrUpdateCategory setShowAddCategory={setShowAddCategory} />
           )}
           <Suspense

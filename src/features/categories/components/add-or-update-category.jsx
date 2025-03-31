@@ -2,34 +2,34 @@ import { useForm } from "react-hook-form";
 import { httpInterceptedService } from "@core/http-service";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-// import { useCategoryContext } from "../category-context";
-// import { useEffect } from "react";
+import { useCategoryContext } from "../category-context";
+import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 
 const AddOrUpdateCategory = ({ setShowAddCategory }) => {
   const {
     register,
     handleSubmit,
-    // setValue,
+    setValue,
     formState: { errors },
   } = useForm();
 
-  //   const { category, setCategory } = useCategoryContext();
+  const { category, setCategory } = useCategoryContext();
 
   const navigate = useNavigate();
 
   const { t } = useTranslation();
 
-  //   useEffect(() => {
-  //     if (category) {
-  //       setValue("name", category.name);
-  //       setValue("id", category.id);
-  //     }
-  //   }, [category]);
+  useEffect(() => {
+    if (category) {
+      setValue("name", category.name);
+      setValue("id", category.id);
+    }
+  }, [category]);
 
   const onClose = () => {
     setShowAddCategory(false);
-    // setCategory(null);
+    setCategory(null);
   };
 
   const onSubmit = (data) => {
@@ -43,9 +43,9 @@ const AddOrUpdateCategory = ({ setShowAddCategory }) => {
           render() {
             const url = new URL(window.location.href);
             navigate(url.pathname + url.search);
-            // if (category) {
-            //   setCategory(null);
-            // }
+            if (category) {
+              setCategory(null);
+            }
             return "عملیات با موفقیت انجام شد";
           },
         },
@@ -60,7 +60,7 @@ const AddOrUpdateCategory = ({ setShowAddCategory }) => {
         },
       },
       {
-        position: toast.POSITION.BOTTOM_LEFT,
+        position: "bottom-left",
       }
     );
   };

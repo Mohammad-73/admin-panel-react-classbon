@@ -1,14 +1,14 @@
 import { useNavigation } from "react-router-dom";
 import Pagination from "../../../components/pagination";
 import Spinner from "../../../components/spinner";
-// import { useCategoryContext } from "../category-context";
+import { useCategoryContext } from "../category-context";
 
 const CategoryList = ({
   categories: { data, totalRecords },
   deleteCategory,
 }) => {
   const navigation = useNavigation();
-  //   const { setCategory } = useCategoryContext();
+  const { setCategory } = useCategoryContext();
 
   return (
     <>
@@ -31,7 +31,7 @@ const CategoryList = ({
                       <td className="table-action">
                         <a
                           className="ms-3"
-                          //   onClick={() => setCategory(category)}
+                          onClick={() => setCategory(category)}
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -40,7 +40,7 @@ const CategoryList = ({
                             viewBox="0 0 24 24"
                             fill="none"
                             stroke="currentColor"
-                            strokewidth="2"
+                            strokeWidth="2"
                             className="feather feather-edit-2 align-middle"
                           >
                             <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
@@ -54,7 +54,7 @@ const CategoryList = ({
                             viewBox="0 0 24 24"
                             fill="none"
                             stroke="currentColor"
-                            strokewidth="2"
+                            strokeWidth="2"
                             className="feather feather-trash align-middle"
                           >
                             <polyline points="3 6 5 6 21 6"></polyline>
